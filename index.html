@@ -6,1523 +6,16 @@
 <title>БЛАГОРОСТ — Инвестиции в кооперативную экономику</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --gold: #C9973A;
-    --gold-light: #E8B84B;
-    --gold-dim: rgba(201, 151, 58, 0.15);
-    --dark: #080a0e;
-    --dark-2: #0e1118;
-    --dark-3: #141820;
-    --dark-4: #1c2230;
-    --text: #c8cdd8;
-    --text-dim: #6b7485;
-    --text-bright: #eef0f5;
-    --phi: 1.618;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--dark);
-    color: var(--text);
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    line-height: 1.7;
-  }
-
-  /* ─── NOISE OVERLAY ─── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.4;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(to bottom, rgba(8,10,14,0.95), transparent);
-    backdrop-filter: blur(2px);
-  }
-
-  .nav-logo {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-  }
-
-  .nav-logo span {
-    color: var(--text-dim);
-    font-weight: 300;
-  }
-
-  .nav-cta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    border: 1px solid rgba(201, 151, 58, 0.4);
-    padding: 10px 24px;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.3s;
-  }
-
-  .nav-cta:hover {
-    background: var(--gold-dim);
-    border-color: var(--gold);
-  }
-
-  /* ─── SECTIONS ─── */
-  section { position: relative; }
-
-  .container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 60px;
-  }
-
-  /* ─── HERO ─── */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 120px 0 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,151,58,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 20% 30%, rgba(30,40,80,0.5) 0%, transparent 70%);
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 420px;
-    gap: 80px;
-    align-items: center;
-    position: relative;
-  }
-
-  .hero-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 32px;
-    opacity: 0.8;
-  }
-
-  .hero-label::before {
-    content: '▸ ';
-    color: var(--gold);
-  }
-
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(52px, 6vw, 82px);
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--text-bright);
-    letter-spacing: -0.02em;
-    margin-bottom: 32px;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .hero-desc {
-    font-size: 17px;
-    color: var(--text);
-    max-width: 540px;
-    margin-bottom: 52px;
-    line-height: 1.8;
-    font-weight: 300;
-  }
-
-  .hero-cta-group {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-
-  .btn-primary {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--dark);
-    background: var(--gold);
-    padding: 16px 36px;
-    text-decoration: none;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn-primary::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.1);
-    transform: translateX(-100%);
-    transition: transform 0.3s;
-  }
-
-  .btn-primary:hover::after { transform: translateX(0); }
-
-  .btn-secondary {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    color: var(--text-dim);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.3s;
-  }
-
-  .btn-secondary:hover { color: var(--text); }
-
-  /* Hero right — formula preview */
-  .hero-formula-card {
-    background: var(--dark-2);
-    border: 1px solid rgba(201,151,58,0.2);
-    padding: 40px 36px;
-    position: relative;
-  }
-
-  .hero-formula-card::before {
-    content: 'Формула Благороста';
-    position: absolute;
-    top: -1px; left: 24px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    background: var(--dark);
-    padding: 0 8px;
-    transform: translateY(-50%);
-    text-transform: uppercase;
-  }
-
-  .formula-big {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
-    font-weight: 300;
-    color: var(--text-bright);
-    text-align: center;
-    padding: 24px 0;
-    letter-spacing: -0.02em;
-  }
-
-  .formula-big .phi {
-    color: var(--gold);
-    font-style: italic;
-  }
-
-  .formula-divider {
-    border: none;
-    border-top: 1px solid rgba(201,151,58,0.15);
-    margin: 20px 0;
-  }
-
-  .formula-legend {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .formula-row {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    font-size: 13px;
-  }
-
-  .formula-var {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 17px;
-    color: var(--gold);
-    font-style: italic;
-    min-width: 20px;
-    line-height: 1.2;
-  }
-
-  .formula-def {
-    color: var(--text-dim);
-    font-size: 12px;
-    line-height: 1.5;
-  }
-
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(201,151,58,0.1);
-    margin-top: 28px;
-  }
-
-  .stat-item {
-    background: var(--dark-2);
-    padding: 16px 12px;
-    text-align: center;
-  }
-
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    color: var(--gold);
-    display: block;
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    margin-top: 4px;
-    text-transform: uppercase;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  /* ─── SECTION HEADERS ─── */
-  .section-header {
-    margin-bottom: 72px;
-  }
-
-  .section-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-    opacity: 0.8;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-tag::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: rgba(201,151,58,0.4);
-  }
-
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 4vw, 54px);
-    font-weight: 300;
-    color: var(--text-bright);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-  }
-
-  h2 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .section-subtitle {
-    font-size: 16px;
-    color: var(--text-dim);
-    margin-top: 20px;
-    max-width: 560px;
-    line-height: 1.8;
-  }
-
-  /* ─── PROBLEM ─── */
-  #problem {
-    padding: 120px 0;
-    background: var(--dark-2);
-    border-top: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .problem-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    background: rgba(255,255,255,0.04);
-    margin-top: 60px;
-  }
-
-  .problem-card {
-    background: var(--dark-2);
-    padding: 48px 40px;
-    position: relative;
-  }
-
-  .problem-icon {
-    font-size: 28px;
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .problem-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 400;
-    color: var(--text-bright);
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-
-  .problem-card p {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.8;
-  }
-
-  .problem-card.highlight {
-    background: linear-gradient(135deg, rgba(201,151,58,0.08), rgba(201,151,58,0.02));
-    border: 1px solid rgba(201,151,58,0.2);
-  }
-
-  .problem-card.highlight h3 { color: var(--gold-light); }
-
-  /* ─── WHAT IS ─── */
-  #what {
-    padding: 140px 0;
-  }
-
-  .what-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 100px;
-    align-items: start;
-  }
-
-  .what-text p {
-    font-size: 16px;
-    color: var(--text);
-    line-height: 1.9;
-    margin-bottom: 24px;
-  }
-
-  .what-text p strong {
-    color: var(--text-bright);
-    font-weight: 500;
-  }
-
-  .highlight-block {
-    background: var(--dark-3);
-    border-left: 2px solid var(--gold);
-    padding: 24px 28px;
-    margin: 32px 0;
-  }
-
-  .highlight-block p {
-    font-size: 15px !important;
-    color: var(--text-bright) !important;
-    font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px !important;
-    margin-bottom: 0 !important;
-    line-height: 1.5 !important;
-  }
-
-  .roles-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .role-item {
-    background: var(--dark-2);
-    border: 1px solid transparent;
-    padding: 20px 24px;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    transition: all 0.3s;
-    cursor: default;
-  }
-
-  .role-item:hover {
-    border-color: rgba(201,151,58,0.3);
-    background: var(--dark-3);
-    transform: translateX(4px);
-  }
-
-  .role-icon {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--gold);
-    background: var(--gold-dim);
-    padding: 4px 8px;
-    letter-spacing: 0.1em;
-    white-space: nowrap;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
-
-  .role-info h4 {
-    font-size: 15px;
-    color: var(--text-bright);
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
-
-  .role-info p {
-    font-size: 12px;
-    color: var(--text-dim);
-    line-height: 1.6;
-  }
-
-  /* ─── FORMULA ─── */
-  #formula {
-    padding: 140px 0;
-    background: var(--dark-2);
-    border-top: 1px solid rgba(255,255,255,0.04);
-    overflow: hidden;
-  }
-
-  .formula-section-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    margin-top: 80px;
-  }
-
-  .formula-visual {
-    position: relative;
-  }
-
-  .formula-block {
-    background: var(--dark-3);
-    border: 1px solid rgba(201,151,58,0.2);
-    padding: 40px;
-    position: relative;
-    margin-bottom: 2px;
-  }
-
-  .formula-block-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    opacity: 0.7;
-  }
-
-  .big-formula {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
-    font-weight: 300;
-    color: var(--text-bright);
-    line-height: 1.3;
-  }
-
-  .big-formula .gold { color: var(--gold); font-style: italic; }
-  .big-formula .dim { color: var(--text-dim); }
-
-  .formula-vars {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .fv-row {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 16px;
-    align-items: baseline;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-size: 13px;
-  }
-
-  .fv-row:last-child { border-bottom: none; }
-
-  .fv-sym {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-style: italic;
-    color: var(--gold);
-    text-align: center;
-  }
-
-  .fv-text { color: var(--text-dim); line-height: 1.5; }
-  .fv-text strong { color: var(--text); font-weight: 500; }
-
-  /* Pie visualization */
-  .pie-visual {
-    margin: 40px 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .pie-svg { flex-shrink: 0; }
-
-  .pie-legend { display: flex; flex-direction: column; gap: 12px; }
-
-  .pie-legend-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 13px;
-  }
-
-  .pie-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .pie-dot.gold { background: var(--gold); }
-  .pie-dot.dim { background: rgba(201,151,58,0.25); border: 1px solid var(--gold); }
-
-  .pie-legend-label { color: var(--text-dim); }
-  .pie-legend-label strong { color: var(--text-bright); font-weight: 500; }
-
-  .formula-explanation {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .exp-block h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--text-bright);
-    margin-bottom: 14px;
-    line-height: 1.2;
-  }
-
-  .exp-block p {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.8;
-  }
-
-  .exp-block p strong { color: var(--text); font-weight: 500; }
-
-  .phi-circle {
-    display: inline-block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-style: italic;
-    color: var(--dark);
-    background: var(--gold);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-
-  .proportion-bar {
-    margin: 20px 0;
-    height: 40px;
-    display: flex;
-    border: 1px solid rgba(201,151,58,0.2);
-    overflow: hidden;
-  }
-
-  .prop-segment {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-    transition: all 0.3s;
-  }
-
-  .prop-a {
-    width: 61.8%;
-    background: var(--gold);
-    color: var(--dark);
-  }
-
-  .prop-b {
-    width: 38.2%;
-    background: var(--gold-dim);
-    color: var(--gold);
-    border-left: 1px solid rgba(201,151,58,0.3);
-  }
-
-  .example-calc {
-    background: var(--dark-3);
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 28px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-  }
-
-  .calc-title {
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    opacity: 0.7;
-  }
-
-  .calc-line {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    color: var(--text-dim);
-  }
-
-  .calc-line:last-child { border-bottom: none; }
-  .calc-line .val { color: var(--gold); }
-  .calc-line.total { color: var(--text-bright); padding-top: 16px; }
-
-  /* ─── HOW IT WORKS ─── */
-  #how {
-    padding: 140px 0;
-  }
-
-  .phases {
-    margin-top: 72px;
-    position: relative;
-  }
-
-  .phases::before {
-    content: '';
-    position: absolute;
-    left: 32px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, var(--gold), rgba(201,151,58,0.1));
-  }
-
-  .phase {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 40px;
-    margin-bottom: 60px;
-    position: relative;
-  }
-
-  .phase-num {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 4px;
-  }
-
-  .phase-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--gold);
-    border: 2px solid var(--dark);
-    outline: 2px solid rgba(201,151,58,0.3);
-    margin-left: 26px;
-    flex-shrink: 0;
-  }
-
-  .phase-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-top: 12px;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    opacity: 0.6;
-  }
-
-  .phase-content {
-    padding-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .phase:last-child .phase-content { border-bottom: none; }
-
-  .phase-content h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--text-bright);
-    margin-bottom: 12px;
-    line-height: 1.2;
-  }
-
-  .phase-content p {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.8;
-    margin-bottom: 12px;
-    max-width: 640px;
-  }
-
-  .phase-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--text-dim);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 5px 12px;
-    text-transform: uppercase;
-  }
-
-  .tag.gold-tag {
-    color: var(--gold);
-    border-color: rgba(201,151,58,0.3);
-    background: var(--gold-dim);
-  }
-
-  /* ─── FOR ENGINEERS ─── */
-  #engineers {
-    padding: 140px 0;
-    background: var(--dark-2);
-    border-top: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .engineers-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    margin-top: 72px;
-  }
-
-  .compare-table {
-    border: 1px solid rgba(255,255,255,0.06);
-    overflow: hidden;
-  }
-
-  .compare-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .compare-header div {
-    padding: 16px 20px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  .compare-header .col-bad {
-    background: rgba(255,255,255,0.03);
-    color: var(--text-dim);
-  }
-
-  .compare-header .col-good {
-    background: var(--gold-dim);
-    color: var(--gold);
-  }
-
-  .compare-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .compare-row div {
-    padding: 16px 20px;
-    font-size: 13px;
-    line-height: 1.6;
-  }
-
-  .compare-row .bad { color: var(--text-dim); }
-  .compare-row .good { color: var(--text); border-left: 1px solid rgba(201,151,58,0.15); }
-
-  .engineers-points {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
-
-  .eng-point {
-    padding-left: 20px;
-    border-left: 2px solid rgba(201,151,58,0.3);
-  }
-
-  .eng-point h4 {
-    font-size: 16px;
-    color: var(--text-bright);
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
-
-  .eng-point p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  .eng-point p strong { color: var(--gold); font-weight: 500; }
-
-  .ai-warning {
-    background: linear-gradient(135deg, rgba(201,151,58,0.08), rgba(201,151,58,0.02));
-    border: 1px solid rgba(201,151,58,0.25);
-    padding: 28px 32px;
-    margin-top: 40px;
-    position: relative;
-  }
-
-  .ai-warning::before {
-    content: '⚠';
-    position: absolute;
-    top: 28px; right: 28px;
-    font-size: 18px;
-    color: var(--gold);
-    opacity: 0.5;
-  }
-
-  .ai-warning h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    color: var(--gold-light);
-    margin-bottom: 12px;
-  }
-
-  .ai-warning p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  /* ─── FOR INVESTORS ─── */
-  #investors {
-    padding: 140px 0;
-  }
-
-  .investor-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: rgba(255,255,255,0.04);
-    margin-top: 72px;
-  }
-
-  .investor-card {
-    background: var(--dark);
-    padding: 44px 32px;
-  }
-
-  .investor-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--text-bright);
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-
-  .investor-card p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  .investor-card .card-icon {
-    font-size: 24px;
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .investor-card.featured {
-    background: var(--dark-3);
-    border: 1px solid rgba(201,151,58,0.25);
-    margin: -1px;
-    z-index: 2;
-    position: relative;
-  }
-
-  .investor-flow {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 60px;
-    position: relative;
-  }
-
-  .investor-flow::after {
-    content: '';
-    position: absolute;
-    top: 30px;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), var(--gold), transparent);
-    opacity: 0.3;
-  }
-
-  .flow-item {
-    text-align: center;
-    padding: 0 16px;
-    position: relative;
-  }
-
-  .flow-item::before {
-    content: attr(data-step);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--dark-3);
-    border: 1px solid rgba(201,151,58,0.3);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 18px;
-    color: var(--gold);
-    margin: 0 auto 20px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .flow-item h4 {
-    font-size: 14px;
-    color: var(--text-bright);
-    margin-bottom: 8px;
-    font-weight: 500;
-  }
-
-  .flow-item p {
-    font-size: 12px;
-    color: var(--text-dim);
-    line-height: 1.6;
-  }
-
-  /* ─── WHAT WE BUILD ─── */
-  #build {
-    padding: 140px 0;
-    background: var(--dark-2);
-    border-top: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .build-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: rgba(255,255,255,0.04);
-    margin-top: 72px;
-  }
-
-  .build-card {
-    background: var(--dark-2);
-    padding: 44px 36px;
-  }
-
-  .build-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--text-bright);
-    margin: 20px 0 14px;
-    line-height: 1.2;
-  }
-
-  .build-card p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  .build-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    opacity: 0.6;
-  }
-
-  /* ─── APPS ─── */
-  #apps {
-    padding: 140px 0;
-    border-top: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .apps-intro {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    margin-bottom: 80px;
-  }
-
-  .apps-intro-text p {
-    font-size: 15px;
-    color: var(--text);
-    line-height: 1.9;
-    margin-bottom: 20px;
-  }
-
-  .apps-intro-text p strong { color: var(--text-bright); font-weight: 500; }
-
-  .apps-logic-block {
-    background: var(--dark-3);
-    border: 1px solid rgba(201,151,58,0.18);
-    padding: 32px;
-  }
-
-  .apps-logic-block h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--gold-light);
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-
-  .apps-logic-block p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-    margin-bottom: 14px;
-  }
-
-  .apps-logic-block p:last-child { margin-bottom: 0; }
-
-  .apps-logic-block p strong { color: var(--text); font-weight: 500; }
-
-  .logic-chain {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 20px;
-  }
-
-  .logic-step {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .logic-step:last-child { border-bottom: none; }
-
-  .logic-arrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--gold);
-    opacity: 0.6;
-    padding-top: 2px;
-    flex-shrink: 0;
-  }
-
-  .logic-step p {
-    font-size: 12px;
-    color: var(--text-dim);
-    line-height: 1.5;
-    margin: 0 !important;
-  }
-
-  .logic-step p strong { color: var(--text); font-weight: 500; }
-
-  /* App cards grid */
-  .apps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: rgba(255,255,255,0.04);
-  }
-
-  .app-card {
-    background: var(--dark);
-    padding: 36px 32px;
-    position: relative;
-    transition: background 0.3s;
-  }
-
-  .app-card:hover { background: var(--dark-3); }
-
-  .app-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
-  }
-
-  .app-icon {
-    width: 44px;
-    height: 44px;
-    background: var(--gold-dim);
-    border: 1px solid rgba(201,151,58,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .app-status {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 4px 9px;
-    border: 1px solid;
-  }
-
-  .app-status.active {
-    color: #5aaa6e;
-    border-color: rgba(90,170,110,0.4);
-    background: rgba(90,170,110,0.07);
-  }
-
-  .app-status.wip {
-    color: var(--gold);
-    border-color: rgba(201,151,58,0.4);
-    background: var(--gold-dim);
-  }
-
-  .app-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--text-bright);
-    margin-bottom: 12px;
-    line-height: 1.2;
-  }
-
-  .app-card p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-
-  .app-card p strong { color: var(--text); font-weight: 500; }
-
-  .app-card-footer {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  .app-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    color: var(--text-dim);
-    border: 1px solid rgba(255,255,255,0.07);
-    padding: 3px 8px;
-    text-transform: uppercase;
-  }
-
-  .app-card.blagorost-card {
-    background: linear-gradient(135deg, rgba(201,151,58,0.07), rgba(201,151,58,0.02));
-    border: 1px solid rgba(201,151,58,0.22);
-    grid-column: span 1;
-  }
-
-  /* Extensibility callout */
-  .extensibility-block {
-    margin-top: 2px;
-    background: var(--dark-3);
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 48px 44px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-
-  .ext-left h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px;
-    font-weight: 300;
-    color: var(--text-bright);
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-
-  .ext-left h3 em { font-style: italic; color: var(--gold); }
-
-  .ext-left p {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.8;
-    margin-bottom: 14px;
-  }
-
-  .ext-left p strong { color: var(--text); font-weight: 500; }
-
-  .ext-layers {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .ext-layer {
-    padding: 16px 20px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  .ext-layer:nth-child(1) { background: rgba(201,151,58,0.12); }
-  .ext-layer:nth-child(2) { background: rgba(201,151,58,0.07); }
-  .ext-layer:nth-child(3) { background: rgba(201,151,58,0.03); }
-
-  .ext-layer-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--gold);
-    opacity: 0.7;
-    padding-top: 2px;
-    flex-shrink: 0;
-  }
-
-  .ext-layer-text h5 {
-    font-size: 14px;
-    color: var(--text-bright);
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
-
-  .ext-layer-text p {
-    font-size: 12px;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-
-  @media (max-width: 900px) {
-    .apps-intro { grid-template-columns: 1fr; gap: 40px; }
-    .apps-grid { grid-template-columns: 1fr; }
-    .extensibility-block { grid-template-columns: 1fr; gap: 40px; }
-  }
-
-  /* ─── CTA ─── */
-  #cta {
-    padding: 160px 0 120px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  #cta::before {
-    content: 'φ';
-    position: absolute;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 600px;
-    color: rgba(201,151,58,0.03);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-style: italic;
-    pointer-events: none;
-    line-height: 1;
-  }
-
-  .cta-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-    opacity: 0.8;
-    margin-bottom: 24px;
-  }
-
-  .cta-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(40px, 5vw, 68px);
-    font-weight: 300;
-    color: var(--text-bright);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 28px;
-  }
-
-  .cta-title em { font-style: italic; color: var(--gold); }
-
-  .cta-desc {
-    font-size: 16px;
-    color: var(--text-dim);
-    max-width: 520px;
-    margin: 0 auto 56px;
-    line-height: 1.8;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .btn-large {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--dark);
-    background: var(--gold);
-    padding: 20px 52px;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-
-  .btn-large:hover { background: var(--gold-light); }
-
-  .cta-note {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 40px;
-    letter-spacing: 0.1em;
-  }
-
-  .cta-note span { color: var(--gold); }
-
-  .access-badges {
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-    margin-top: 60px;
-    flex-wrap: wrap;
-  }
-
-  .badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--text-dim);
-  }
-
-  .badge-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    border-top: 1px solid rgba(255,255,255,0.04);
-    padding: 40px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .footer-logo {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    opacity: 0.7;
-  }
-
-  .footer-text {
-    font-size: 12px;
-    color: var(--text-dim);
-    text-align: right;
-  }
-
-  .footer-text a {
-    color: var(--text-dim);
-    text-decoration: none;
-  }
-
-  .footer-text a:hover { color: var(--gold); }
-
-  /* ─── SCROLL ANIMATIONS ─── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-
-  /* ─── SCROLLBAR ─── */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--dark); }
-  ::-webkit-scrollbar-thumb { background: rgba(201,151,58,0.3); }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    .container { padding: 0 24px; }
-    .hero-grid { grid-template-columns: 1fr; gap: 60px; }
-    .hero-formula-card { display: none; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .what-grid { grid-template-columns: 1fr; gap: 40px; }
-    .formula-section-grid { grid-template-columns: 1fr; }
-    .engineers-grid { grid-template-columns: 1fr; }
-    .investor-grid { grid-template-columns: 1fr; }
-    .investor-flow { grid-template-columns: 1fr 1fr; gap: 40px; }
-    .investor-flow::after { display: none; }
-    .build-grid { grid-template-columns: 1fr; }
-    footer { padding: 40px 24px; }
-  }
-</style>
+<link rel="stylesheet" href="src/css/main.css">
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">БЛАГОРОСТ <span>/ ПК «ВОСХОД»</span></div>
   <a href="#cta" class="nav-cta">Принять участие</a>
 </nav>
 
-<!-- ═══════════════════════════════════════════ HERO -->
+
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="container">
@@ -1530,37 +23,38 @@
       <div>
         <div class="hero-label reveal">Целевая потребительская программа</div>
         <h1 class="reveal reveal-delay-1">
-          Ваше время<br><em>стоит больше,</em><br>чем вам платят
+          Инвестируй в<br><em>Кооперативную Экономику</em><br>
         </h1>
         <p class="hero-desc reveal reveal-delay-2">
-          Благорост — кооперативная программа для инженеров и инвесторов, 
-          которые хотят создавать цифровую экосистему нового поколения. 
-          Инвестируйте временем, компетенциями или деньгами — 
-          и получайте долю в объекте авторских прав.
+          Благорост — целевая потребительская программа для пайщиков,
+          которые принимают участие в разработке платформы и приложений экосистемы "Кооперативная Экономика". 
+          Инвестируйте временем или деньгами —
+          и получайте справедливую долю в объекте авторских прав (ОАП) с возвратом выгоды от роста экосистемы.
         </p>
         <div class="hero-cta-group reveal reveal-delay-3">
           <a href="#cta" class="btn-primary">Принять участие</a>
-          <a href="#formula" class="btn-secondary">Узнать модель →</a>
+          <a href="#formula" class="btn-secondary">Подробнее о модели →</a>
         </div>
       </div>
       <div class="reveal reveal-delay-2">
         <div class="hero-formula-card">
           <div class="formula-big">
-            S = <span class="phi">φ</span> · a
+            S = <span class="phi">φ</span> · A
           </div>
+          <p class="formula-note">Каждый участник программы получает долю в объекте авторских прав (ОАП).</p>
           <hr class="formula-divider">
           <div class="formula-legend">
             <div class="formula-row">
               <div class="formula-var">S</div>
-              <div class="formula-def">Стоимость объекта авторских прав — нового имущества кооператива</div>
+              <div class="formula-def">Стоимость объекта авторских прав платформы "Кооперативная Экономика"</div>
             </div>
             <div class="formula-row">
-              <div class="formula-var">a</div>
-              <div class="formula-def">Стоимость времени и ресурсов команды проекта</div>
+              <div class="formula-var">A</div>
+              <div class="formula-def">Стоимость разработки приложений экосистемы</div>
             </div>
             <div class="formula-row">
               <div class="formula-var">φ</div>
-              <div class="formula-def">Золотое сечение = 1,618 — коэффициент содействия участников Благороста</div>
+              <div class="formula-def">Коэффициент содействия участников программы (Золотое сечение = 1,618)</div>
             </div>
           </div>
           <div class="stat-row">
@@ -1570,11 +64,7 @@
             </div>
             <div class="stat-item">
               <span class="stat-num">38,2%</span>
-              <span class="stat-label">Благорост</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-num">5+</span>
-              <span class="stat-label">Ролей</span>
+              <span class="stat-label">Участникам</span>
             </div>
           </div>
         </div>
@@ -1583,67 +73,89 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ PROBLEM -->
+
 <section id="problem">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag reveal">Контекст</div>
-      <h2 class="reveal reveal-delay-1">Почему это <em>важно</em> именно сейчас</h2>
+      <div class="section-tag reveal">Почему сейчас</div>
+      <h2 class="reveal reveal-delay-1">Мы живём на сломе <em>экономического цикла</em></h2>
+      <p class="section-subtitle reveal reveal-delay-2">
+        Каждые несколько сотен лет доминирующая форма экономики уступает место следующей.
+        Признаки смены — всегда одни и те же.
+      </p>
     </div>
     <div class="problem-grid">
+
       <div class="problem-card reveal">
-        <span class="problem-icon">⏱</span>
-        <h3>Капиталист присваивает «невидимое» время</h3>
-        <p>Когда вам платят почасово, работодатель оплачивает лишь ваше «видимое» время. Но за каждым часом стоят годы образования, инфраструктура общества, коллективный опыт поколений — всё это не компенсируется. Это «общественно-полезное время» традиционно присваивается капиталистом.</p>
+        <span class="problem-icon">🌀</span>
+        <h3>Финансовый капитал оторвался от реального</h3>
+        <p>По мир-системной теории Арриги, каждый цикл заканчивается одинаково: капитал уходит из производства в спекуляцию. Это не кризис — это сигнал. Предыдущая модель исчерпала себя. Открывается окно для следующей.</p>
       </div>
-      <div class="problem-card highlight reveal reveal-delay-1">
-        <span class="problem-icon">🤖</span>
-        <h3>ИИ вытесняет наёмных специалистов</h3>
-        <p>Автоматизация уже сокращает рабочие места в IT, дизайне, аналитике. Этот тренд будет только усиливаться. Те, кто работают на найме, уязвимы. Решение — создавать своё, владеть результатами своего труда.</p>
+
+      <div class="problem-card reveal reveal-delay-1">
+        <span class="problem-icon">🧠</span>
+        <h3>Интеллект стал главным капиталом</h3>
+        <p>В постиндустриальную эпоху идеи, алгоритмы и интеллектуальные продукты создают больше стоимости, чем заводы и земля. Но инструментов для честного учёта и капитализации этого труда до сих пор не было.</p>
       </div>
-      <div class="problem-card reveal reveal-delay-2">
-        <span class="problem-icon">🏗</span>
-        <h3>Кооперативы устарели технически</h3>
-        <p>Традиционные кооперативы работают на бумажных документах и ручных процессах. Это делает их медленными, дорогими и непрозрачными. Нужна цифровая инфраструктура, реализующая кооперативные принципы через блокчейн.</p>
+
+      <div class="problem-card highlight reveal reveal-delay-2">
+        <span class="problem-icon">⚡</span>
+        <h3>ИИ — не угроза, а усилитель. Вопрос в том, кто владеет системами</h3>
+        <p>Автоматизация меняет рынок труда быстрее, чем кажется. Но ключевой вопрос не «заменит ли ИИ вас», а «кому принадлежат системы, которые вы помогаете строить». Кооперативная форма даёт ответ.</p>
       </div>
+
       <div class="problem-card reveal reveal-delay-3">
-        <span class="problem-icon">🔗</span>
-        <h3>Интеллектуальный труд не капитализируется</h3>
-        <p>Разработчики, авторы, архитекторы решений создают огромную ценность, но не владеют ею. После увольнения или смены проекта их вклад обнуляется. Благорост меняет это правило: результат труда — ваш актив.</p>
+        <span class="problem-icon">🔁</span>
+        <h3>Следующий цикл — сетевой</h3>
+        <p>Арриги описал чередование: корпоративные эпохи сменяются сетевыми. Кооперативы — это и есть сетевые структуры по природе. Блокчейн впервые даёт им инфраструктуру, сопоставимую с тем, что у корпораций было веками.</p>
       </div>
+
+      <div class="problem-card reveal">
+        <span class="problem-icon">📜</span>
+        <h3>Хрематистика против экономики</h3>
+        <p>Аристотель разделял «экономику» — хозяйствование ради общественного блага — и «хрематистику» — накопление ради накопления. То, что сегодня называют экономикой, по Аристотелю — хрематистика. Кооператив — это и есть экономика в исходном смысле.</p>
+      </div>
+
+      <div class="problem-card reveal reveal-delay-1">
+        <span class="problem-icon">🔐</span>
+        <h3>Доверие можно запрограммировать</h3>
+        <p>Смарт-контракт — это протокол доверия. Каждое юридически значимое действие фиксируется автоматически: без посредников, без бюрократии, без возможности задним числом переписать условия. Это и есть «код рынка» нового уклада.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ WHAT IS -->
 <section id="what">
   <div class="container">
     <div class="what-grid">
       <div class="what-text">
         <div class="section-tag reveal">Что такое Благорост</div>
-        <h2 class="reveal reveal-delay-1">Кооперативная <em>программа</em> нового поколения</h2>
+        <h2 class="reveal reveal-delay-1">Кооперативная программа<br><em>капитализации интеллекта</em></h2>
 
         <div class="reveal reveal-delay-2">
           <p style="margin-top: 32px;">
-            <strong>Благорост</strong> — целевая потребительская программа Потребительского кооператива «ВОСХОД», 
-            реализующая на блокчейне принципы справедливого распределения стоимости 
-            интеллектуального труда.
+            <strong>Благорост</strong> — целевая потребительская программа Потребительского кооператива «ВОСХОД».
+            Участники вносят паевые взносы <strong>результатами интеллектуальной деятельности</strong>
+            или денежными средствами — и получают долю в создаваемом
+            <strong>объекте авторских прав (ОАП)</strong>.
           </p>
           <p>
-            Участники вносят в кооператив паевые взносы — временем, компетенциями, идеями 
-            или деньгами — и получают <strong>долю в объекте авторских прав (ОАП)</strong>, 
-            создаваемом в рамках проектов. Это не фриланс и не стартап. 
-            Это <strong>кооперативная форма создания и владения</strong> цифровым продуктом.
+            Результаты создаются и фиксируются в трекере по проектам и компонентам —
+            Концепция, Модель, MVP, релизы. Каждый акцептованный коммит становится
+            имущественным паевым взносом в кооператив. Это не фриланс и не стартап.
+            Это <strong>кооперативная форма владения</strong> цифровым продуктом.
           </p>
 
           <div class="highlight-block">
-            <p>«Наёмнику платят за время — оно уходит капиталисту. Здесь взносы принимаются результатами — они остаются у вас»</p>
+            <p>«Сотрудник продаёт время и получает деньги. Пайщик вносит результат и получает долю в объекте авторских прав (ОАП). У нас нет сотрудников. Мы - пайщики.»</p>
           </div>
 
           <p>
-            Возвраты паевых взносов формируются из инвестиционных средств и <strong>членских взносов</strong> — 
-            платежей, которые кооперативы вносят за каждый документ, проведённый через приложения 
-            платформы. Чем активнее экосистема — тем выше возвраты.
+            Возврат паевых взносов обеспечивается двумя потоками:
+            инвестиционными средствами участников программы и <strong>членскими взносами</strong> —
+            платежами кооперативов за каждый документ, проведённый через приложения платформы.
+            Больше кооперативов в экосистеме — устойчивее поток возвратов.
           </p>
         </div>
       </div>
@@ -1655,83 +167,77 @@
             <div class="role-icon">МАСТЕР</div>
             <div class="role-info">
               <h4>Руководитель проекта</h4>
-              <p>Управляет командой, акцептует коммиты, несёт ответственность за результат. Назначается Советом кооператива.</p>
+              <p>Управляет командой, акцептует коммиты, несёт персональную ответственность за результат. Назначается Советом кооператива на проект.</p>
             </div>
           </div>
           <div class="role-item reveal reveal-delay-2">
             <div class="role-icon">АВТОР</div>
             <div class="role-info">
               <h4>Автор / Соавтор</h4>
-              <p>Вносит Идею в кооператив как паевой взнос. Участвует в авторском надзоре и создании Концепции и Модели.</p>
+              <p>Вносит Идею как паевой взнос, формирует Концепцию и Модель, осуществляет авторский надзор на всех этапах.</p>
             </div>
           </div>
           <div class="role-item reveal reveal-delay-2">
             <div class="role-icon">ИСПОЛНИТЕЛЬ</div>
             <div class="role-info">
               <h4>Исполнитель</h4>
-              <p>Вкладывает астрономическое время и компетенции — воплощает продукт. Трекер фиксирует каждый час. Минимальный порог — от 2 часов в неделю.</p>
+              <p>Воплощает продукт — компетенциями и профессиональным навыком. Трекер фиксирует результаты по задачам. От часа в день.</p>
             </div>
           </div>
           <div class="role-item reveal reveal-delay-3">
             <div class="role-icon">КООРДИНАТОР</div>
             <div class="role-info">
               <h4>Координатор</h4>
-              <p>Привлекает инвестиции в проект. Получает долю в ОАП пропорционально привлечённым средствам (5% от r).</p>
+              <p>Привлекает инвестиции в проект. Доля в ОАП рассчитывается пропорционально привлечённым средствам.</p>
             </div>
           </div>
           <div class="role-item reveal reveal-delay-4">
             <div class="role-icon">ИНВЕСТОР</div>
             <div class="role-info">
               <h4>Инвестор</h4>
-              <p>Вносит денежные средства в программу с указанием приоритетного проекта. Обеспечивает ресурсный фундамент и получает долю в ОАП и возвраты из членских взносов.</p>
+              <p>Вносит денежные средства в программу с указанием приоритетного проекта. Получает долю в ОАП и возвраты из членских взносов платформы.</p>
             </div>
           </div>
         </div>
-        <p style="font-size: 12px; color: var(--text-dim); margin-top: 16px; font-family: 'JetBrains Mono', monospace;">
-          ⁎ Сначала — статус кандидата в пайщики. Не все проходят отбор.
-        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ FORMULA -->
 <section id="formula">
   <div class="container">
     <div class="section-header">
       <div class="section-tag reveal">Математическая модель</div>
       <h2 class="reveal reveal-delay-1">Формула <em>Благороста</em></h2>
       <p class="section-subtitle reveal reveal-delay-2">
-        Модель основана на принципе «общественно-полезного времени» и «золотом сечении» — 
-        математическом законе природы, описывающем гармоничные пропорции роста.
+        В основе — золотое сечение и принцип общественно-полезного времени.
       </p>
     </div>
-
     <div class="formula-section-grid">
-      <!-- LEFT: Visual formula -->
       <div class="formula-visual">
+
+        <!-- Уровень 1 -->
         <div class="formula-block reveal">
           <div class="formula-block-label">Уровень 1 — Программа Благорост</div>
           <div class="big-formula">
-            S = <span class="gold">1,618</span> <span class="dim">×</span> a
+            S = <span class="gold">φ</span> <span class="dim">×</span> A
           </div>
           <div class="formula-vars">
             <div class="fv-row">
               <div class="fv-sym">S</div>
-              <div class="fv-text"><strong>Итоговая стоимость ОАП</strong> — новое имущество кооператива, создаваемое в проекте</div>
+              <div class="fv-text"><strong>Итоговая стоимость ОАП</strong> платформы «Кооперативная Экономика»</div>
             </div>
             <div class="fv-row">
-              <div class="fv-sym">a</div>
-              <div class="fv-text"><strong>Стоимость команды</strong> — совокупные затраты времени и ресурсов всей команды проекта</div>
+              <div class="fv-sym">A</div>
+              <div class="fv-text"><strong>Себестоимость всех проектов</strong> — совокупные паевые взносы команд (раскрывается ниже)</div>
             </div>
             <div class="fv-row">
               <div class="fv-sym" style="font-style:italic">φ</div>
-              <div class="fv-text"><strong>Золотое сечение = 1,618</strong> — коэффициент, учитывающий «невидимое» общественное время, воплощённое в компетенциях участников</div>
+              <div class="fv-text"><strong>Золотое сечение = 1,618</strong> — коэффициент содействия участников программы Благорост</div>
             </div>
           </div>
           <div class="pie-visual">
             <svg class="pie-svg" width="100" height="100" viewBox="0 0 100 100">
-              <!-- 61.8% = 222.5deg, 38.2% = 137.5deg -->
               <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(201,151,58,0.25)" stroke-width="20"/>
               <circle cx="50" cy="50" r="40" fill="none" stroke="#C9973A" stroke-width="20"
                 stroke-dasharray="155.5 96" stroke-dashoffset="39" transform="rotate(-90 50 50)"/>
@@ -1740,122 +246,131 @@
             <div class="pie-legend">
               <div class="pie-legend-item">
                 <div class="pie-dot gold"></div>
-                <div class="pie-legend-label"><strong>61,8%</strong> — доля команды проекта</div>
+                <div class="pie-legend-label"><strong>61,8%</strong> — паевые взносы команд проектов (A)</div>
               </div>
               <div class="pie-legend-item">
                 <div class="pie-dot dim"></div>
-                <div class="pie-legend-label"><strong>38,2%</strong> — прирост Благороста, распределяется среди всех участников программы</div>
+                <div class="pie-legend-label"><strong>38,2%</strong> — Благорост: дополнительные паевые взносы всем участникам программы</div>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Уровень 2 -->
         <div class="formula-block reveal reveal-delay-1" style="margin-top: 2px;">
-          <div class="formula-block-label">Уровень 2 — Внутри проекта</div>
-          <div class="big-formula" style="font-size: 28px; line-height: 1.5;">
-            a = <span class="gold">1,618</span> <span class="dim">×</span> V <span class="dim">×</span> t <span class="dim">+</span> c
+          <div class="formula-block-label">Уровень 2 — Себестоимость проекта</div>
+          <div class="big-formula" style="font-size: 26px; line-height: 1.6;">
+            A = <span class="gold">φ</span> <span class="dim">×</span> (v+v') <span class="dim">×</span> t <span class="dim">+</span> c
           </div>
           <div class="formula-vars" style="margin-top: 20px;">
             <div class="fv-row">
               <div class="fv-sym">t</div>
-              <div class="fv-text"><strong>Астрономическое время</strong> исполнителя в акцептованных коммитах (часы работы)</div>
+              <div class="fv-text"><strong>Астрономическое время</strong> — часы исполнителя в акцептованных коммитах</div>
             </div>
             <div class="fv-row">
-              <div class="fv-sym">V</div>
-              <div class="fv-text"><strong>Стоимость единицы времени</strong> — включает ставку часа и коэффициент компетенций</div>
+              <div class="fv-sym">v</div>
+              <div class="fv-text"><strong>Стоимость часа</strong> — невосполнимое личное время, оценивается Советом кооператива</div>
             </div>
             <div class="fv-row">
-              <div class="fv-sym">c</div>
-              <div class="fv-text"><strong>Вклад координаторов</strong> = 5% от суммы привлечённых инвестиций r</div>
+              <div class="fv-sym">v'</div>
+              <div class="fv-text"><strong>Стоимость компетенций</strong> — профессиональные навыки, проявленные в единицу времени</div>
             </div>
             <div class="fv-row">
               <div class="fv-sym" style="font-style:italic">φ</div>
-              <div class="fv-text"><strong>Золотое сечение</strong> — определяет долю соавторов относительно исполнителей</div>
+              <div class="fv-text"><strong>Золотое сечение</strong> — взнос соавторов составляет 0,618 от взноса исполнителей</div>
+            </div>
+            <div class="fv-row">
+              <div class="fv-sym">c</div>
+              <div class="fv-text"><strong>Взнос координаторов</strong> — 5% от привлечённых в проект инвестиций</div>
             </div>
           </div>
           <div style="margin-top: 20px;">
             <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">ПРОПОРЦИЯ ВНУТРИ ПРОЕКТА</p>
             <div class="proportion-bar">
               <div class="prop-segment prop-a">61,8% Исполнители</div>
-              <div class="prop-segment prop-b">38,2% Авторы</div>
+              <div class="prop-segment prop-b">38,2% Соавторы</div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- RIGHT: Explanation -->
+      </div>
       <div class="formula-explanation">
+
         <div class="exp-block reveal">
-          <h3>Почему именно Золотое сечение?</h3>
+          <h3>Почему золотое сечение</h3>
           <p>
             <span class="phi-circle">φ</span>
-            Золотое сечение (φ = 1,618...) — это математический принцип, встречающийся в природе, 
-            архитектуре и живых системах. В нашей модели оно решает конкретную задачу: 
-            <strong>объективно оценить «невидимое» время</strong> — то, что обычно присваивает 
-            капиталист.
+            Время исполнителя в формуле делится на два слоя.
+            <strong>Астрономическое</strong> (v) — просто часы жизни, невосполнимый ресурс.
+            <strong>Профессиональное</strong> (v') — компетенции, накопленные годами: образование,
+            практика, опыт предыдущих поколений. Оба учитываются и оба равнозначны.
           </p>
           <p>
-            Каждый час работы исполнителя содержит не только его личный труд, но и годы 
-            образования, опыт предыдущих поколений, общественную инфраструктуру. 
-            Коэффициент φ капитализирует этот вклад, возвращая его авторам и соавторам.
+            Золотое сечение здесь работает как <strong>мера справедливости</strong>.
+            Соавторы — те, кто сформулировал идею — фиксируют взнос
+            равный 61.8% от стоимости взноса исполнителей. Не произвольно, а пропорционально:
+            именно столько стоит идея, подтверждённая реальным трудом исполнителей.
+          </p>
+          <p>
+            На уровне программы то же золотое сечение даёт Благорост: 61.8% от себестоимости
+            всех проектов распределяется среди участников программы — 
+            тех, кто содействовал созданию платформы в любой роли.
           </p>
         </div>
 
         <div class="exp-block reveal reveal-delay-1">
           <h3>Пример расчёта</h3>
           <div class="example-calc">
-            <div class="calc-title">Исполнитель вложил 40 часов / ставка 3 000 ₽</div>
+            <div class="calc-title">t = 40 ч | v = v' = 1 500 ₽/ч</div>
             <div class="calc-line">
-              <span>Базовая стоимость времени (t × v)</span>
+              <span>Взнос исполнителя — (v + v') × t</span>
               <span class="val">120 000 ₽</span>
             </div>
             <div class="calc-line">
-              <span>Доля соавторов через φ (×0,618)</span>
+              <span>Взнос соавторов — 0,618 × 120 000</span>
               <span class="val">74 160 ₽</span>
             </div>
-            <div class="calc-line">
-              <span>Итого стоимость «ядра» проекта (a)</span>
+            <div class="calc-line" style="color: var(--text); border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; margin-top: 4px;">
+              <span>Себестоимость проекта A</span>
               <span class="val">194 160 ₽</span>
             </div>
             <div class="calc-line">
-              <span>Благорост (×1,618) = ОАП Продукта (S)</span>
+              <span>ОАП платформы S = A × 1,618</span>
               <span class="val">314 150 ₽</span>
             </div>
             <div class="calc-line total">
-              <span>Прирост для всех участников программы</span>
+              <span>Благорост = 0,618 × A</span>
               <span class="val">119 990 ₽</span>
             </div>
           </div>
           <p style="margin-top: 16px; font-size: 12px; color: var(--text-dim);">
-            * Суммы — условные для иллюстрации. Реальные ставки утверждаются Советом кооператива. 
-            Для детального расчёта — 
-            <a href="https://coopenomics.github.io/calculator/#/wizard" target="_blank" style="color: var(--gold); text-decoration: none;">воспользуйтесь калькулятором →</a>
+            * Суммы условные. Реальные ставки утверждаются Советом кооператива.
+            <a href="https://coopenomics.github.io/calculator/#/wizard" target="_blank" 
+               style="color: var(--gold); text-decoration: none;">Калькулятор модели →</a>
           </p>
         </div>
 
         <div class="exp-block reveal reveal-delay-2">
-          <h3>Метод Водянова: справедливое распределение</h3>
+          <h3>Метод Водянова: оценка без менеджера</h3>
           <p>
-            Часть премий распределяется через <strong>метод Водянова</strong> (1982) — 
-            демократическую систему взаимной оценки, где каждый участник оценивает вклад 
-            коллег, не включая себя. Это устраняет субъективность и создаёт 
-            объективную картину реального вклада каждого члена команды.
+            Часть стоимости проекта внутри команды распределяется через <strong>метод Водянова</strong> (1982) —
+            систему взаимной оценки, где каждый участник распределяет голосующую сумму
+            между коллегами, исключая себя. Никаких KPI сверху.
+            Участвуют только те, кто видел дело изнутри.
           </p>
         </div>
 
         <div class="exp-block reveal reveal-delay-3">
-          <h3>Возвраты из двух источников</h3>
+          <h3>Откуда берутся возвраты</h3>
           <p>
-            Паевые взносы возвращаются участникам из двух потоков:
+            <strong>Инвестиции</strong> — денежные взносы участников программы обеспечивают
+            компенсацию себестоимости компетенций <span class="fv-sym">v'</span> команд и формируют долю инвестора в ОАП.
           </p>
           <p>
-            <strong>1. Инвестиции</strong> — деньги участников программы направляются 
-            на обеспечение работы команд. Инвестор получает долю в ОАП создаваемых проектов.
-          </p>
-          <p>
-            <strong>2. Членские взносы</strong> — кооперативы, использующие приложения платформы, 
-            платят за каждый проведённый документ. Эти средства сначала покрывают 
-            текущие расходы платформы, а остаток — на возвраты участникам программы.
+            <strong>Членские взносы</strong> — каждый документ, проведённый через приложения
+            платформы, оплачивается кооперативом-пользователем. Эти средства
+            покрывают текущие расходы кооператива, а остаток поступает на возвраты
+            участникам программы Благорост.
           </p>
         </div>
       </div>
@@ -1863,41 +378,45 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ HOW IT WORKS -->
 <section id="how">
   <div class="container">
     <div class="section-header">
       <div class="section-tag reveal">Как устроен процесс</div>
       <h2 class="reveal reveal-delay-1">Жизненный цикл <em>проекта</em></h2>
       <p class="section-subtitle reveal reveal-delay-2">
-        Каждый проект проходит три чётких этапа. На блокчейне. 
-        С фиксацией каждого коммита, голосования и паевого взноса.
+        Каждый проект на блокчейне. С фиксацией каждого коммита, голосования и паевого взноса.
       </p>
+    </div>
+
+    <div class="how-flow reveal reveal-delay-2">
+      <span class="flow-step">Идея</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">Проект</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">Концепция</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">Модель</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">MVP</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">Рабочие версии</span>
     </div>
 
     <div class="phases">
       <div class="phase reveal">
         <div class="phase-num">
           <div class="phase-dot"></div>
-          <div class="phase-label">Этап 1</div>
+          <div class="phase-label">1</div>
         </div>
         <div class="phase-content">
-          <h3>Концепция и Модель</h3>
+          <h3>Идея</h3>
           <p>
-            Идея вносится в кооператив как паевой взнос (оценка — 50 ₽). 
-            Если Совет одобряет её как Проект, назначается Мастер и формируется 
-            Авторский коллектив. Команда создаёт Концепцию — системный образ продукта 
-            с целевой аудиторией, рисками, дорожной картой и ценностным предложением.
-          </p>
-          <p>
-            Затем — Модель: детальное описание с планом задач, оценкой ресурсов 
-            и графиком. Трекер начинает учёт времени с первого коммита.
+            Идея вносится в кооператив как паевой взнос (оценка — 50 ₽).
+            Совет рассматривает в течение 30 дней.
           </p>
           <div class="phase-tags">
-            <span class="tag gold-tag">Идея → 50 ₽</span>
-            <span class="tag">Совет одобряет за 30 дней</span>
-            <span class="tag">Авторский коллектив</span>
-            <span class="tag">Трекер времени</span>
+            <span class="tag gold-tag">Идея как паевой взнос</span>
+            <span class="tag">Совет 30 дней</span>
           </div>
         </div>
       </div>
@@ -1905,25 +424,78 @@
       <div class="phase reveal">
         <div class="phase-num">
           <div class="phase-dot"></div>
-          <div class="phase-label">Этап 2</div>
+          <div class="phase-label">2</div>
         </div>
         <div class="phase-content">
-          <h3>Минимальный продукт</h3>
+          <h3>Проект</h3>
           <p>
-            Команда воплощает первую рабочую версию продукта. 
-            Исполнители фиксируют время через трекер — каждый час становится 
-            «Билетом времени». Акцептованные Мастером коммиты формируют 
-            стоимость ОАП и долю каждого участника.
-          </p>
-          <p>
-            Минимальный продукт тестируется группой пайщиков. 
-            Инспектор и Мастер оценивают соответствие целям. 
-            По результатам тестирования — переход на третий этап или доработка.
+            При одобрении идея становится Проектом. Назначается Мастер,
+            формируется Авторский коллектив. Мастер входит в коллектив соавторов.
           </p>
           <div class="phase-tags">
-            <span class="tag">Коммиты → Доля в ОАП</span>
-            <span class="tag gold-tag">Билеты времени</span>
-            <span class="tag">Беспроцентные займы</span>
+            <span class="tag gold-tag">Мастер + коллектив</span>
+            <span class="tag">Соавторы</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase reveal">
+        <div class="phase-num">
+          <div class="phase-dot"></div>
+          <div class="phase-label">3</div>
+        </div>
+        <div class="phase-content">
+          <h3>Концепция</h3>
+          <p>
+            Команда создаёт системный образ продукта: целевая аудитория, риски,
+            ценностное предложение. Результат — документ-концепция. Соавторы в роли
+            исполнителей фиксируют коммиты в трекере. Учёт времени ведётся с момента
+            начала работы над проектом.
+          </p>
+          <div class="phase-tags">
+            <span class="tag gold-tag">Старт учёта времени</span>
+            <span class="tag">Коммиты соавторов</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase reveal">
+        <div class="phase-num">
+          <div class="phase-dot"></div>
+          <div class="phase-label">4</div>
+        </div>
+        <div class="phase-content">
+          <h3>Модель</h3>
+          <p>
+            Детальное описание с планом задач, оценкой ресурсов и графиком.
+            Предварительная оценка во времени формирует инвестиционный план.
+            Результат — документ-модель в трекере. Коммиты соавторов-исполнителей
+            принимаются и учитываются. По завершении этапа открывается приём
+            инвестиций, собираются средства.
+          </p>
+          <div class="phase-tags">
+            <span class="tag gold-tag">Приём инвестиций</span>
+            <span class="tag">Инвестиционный план</span>
+            <span class="tag">Возврат себестоимости</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase reveal">
+        <div class="phase-num">
+          <div class="phase-dot"></div>
+          <div class="phase-label">5</div>
+        </div>
+        <div class="phase-content">
+          <h3>MVP</h3>
+          <p>
+            Команда воплощает минимальную рабочую версию продукта. Исполнители фиксируют время
+            через трекер — каждый час становится «Билетом времени». Акцептованные
+            Мастером коммиты формируют долю в ОАП. Тестирование пайщиками.
+          </p>
+          <div class="phase-tags">
+            <span class="tag gold-tag">Коммиты → Доля в ОАП</span>
+            <span class="tag">Билеты времени</span>
             <span class="tag">Тестирование пайщиками</span>
           </div>
         </div>
@@ -1932,33 +504,31 @@
       <div class="phase reveal">
         <div class="phase-num">
           <div class="phase-dot"></div>
-          <div class="phase-label">Этап 3</div>
+          <div class="phase-label">6</div>
         </div>
         <div class="phase-content">
-          <h3>Рабочая версия и масштабирование</h3>
+          <h3>Рабочие версии</h3>
           <p>
-            Команда создаёт полноценный продукт. 
-            Утверждаются правила использования, экономические параметры, 
-            юридическая база. Продукт публикуется в экосистеме.
-          </p>
-          <p>
-            После завершения каждый участник выбирает форму конвертации своего вклада: 
-            в цифровой кошелёк (прямой доступ), в программу капитализации (долгосрочный рост) 
-            или остаётся совладельцем проекта для получения членских взносов.
+            Релиз публикуется в экосистеме. Утверждаются правила, экономические
+            параметры, юридическая база. Далее цикл повторяется с этапа Модели:
+            планируется новый релиз, его оценка во времени формирует инвестиционный
+            план, собираются средства — производится следующий релиз. И так далее.
           </p>
           <div class="phase-tags">
-            <span class="tag gold-tag">Продукт → Магазин платформы</span>
-            <span class="tag">Членские взносы кооперативов</span>
-            <span class="tag">3 варианта конвертации</span>
-            <span class="tag">Членские взносы → возвраты</span>
+            <span class="tag gold-tag">Продукт в экосистеме</span>
+            <span class="tag">Цикл: Модель → Релиз</span>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="how-notes reveal">
+      <p>Возврат себестоимости профессиональных компетенций соавторов и исполнителей возможен после открытия приёма инвестиций и при условии наличия инвестированных в проект средств.</p>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ FOR ENGINEERS -->
+
 <section id="engineers">
   <div class="container">
     <div class="section-header">
@@ -1973,7 +543,7 @@
             <div class="col-good">Благорост</div>
           </div>
           <div class="compare-row">
-            <div class="bad">Платят за время — результат уходит работодателю</div>
+            <div class="bad">Платят за время — результат присваивается работодателю</div>
             <div class="good">Взносы принимаются результатами — ОАП остаётся вашим активом</div>
           </div>
           <div class="compare-row">
@@ -1997,9 +567,9 @@
         <div class="ai-warning reveal reveal-delay-1">
           <h4>ИИ меняет рынок уже сейчас</h4>
           <p>
-            Рост автоматизации будет сокращать число наёмных позиций в IT на десятки 
-            процентов в течение ближайших лет. Те, кто строит свои системы и владеет 
-            результатами — в выигрышной позиции. Благорост — это возможность участвовать 
+            Рост автоматизации будет сокращать число наёмных позиций в IT на десятки
+            процентов в течение ближайших лет. Те, кто строит свои системы и владеет
+            результатами — в выигрышной позиции. Благорост — это возможность участвовать
             в создании инфраструктуры нового поколения и получать долю в ней.
           </p>
         </div>
@@ -2008,33 +578,33 @@
         <div class="eng-point reveal">
           <h4>Профессиональное время = паевой взнос</h4>
           <p>
-            Ваши часы фиксирует <strong>трекер</strong>, Мастер акцептует коммиты. 
-            Каждый закрытый коммит — это имущественный паевой взнос в кооператив, 
-            формирующий вашу долю в ОАП. Юридически оформлено, 
+            Ваши часы фиксирует <strong>трекер</strong>, Мастер акцептует коммиты.
+            Каждый закрытый коммит — это имущественный паевой взнос в кооператив,
+            формирующий вашу долю в ОАП. Юридически оформлено,
             технологически закреплено на блокчейне.
           </p>
         </div>
         <div class="eng-point reveal reveal-delay-1">
           <h4>Беспроцентные займы под обеспечение</h4>
           <p>
-            Пока проект идёт, вы можете получать <strong>беспроцентные займы</strong> под 
-            обеспечение накопленных коммитов — до 50% от стоимости ОАП. 
+            Пока проект идёт, вы можете получать <strong>беспроцентные займы</strong> под
+            обеспечение накопленных коммитов — до 50% от стоимости ОАП.
             Это ликвидность без потери доли.
           </p>
         </div>
         <div class="eng-point reveal reveal-delay-2">
           <h4>Метод Водянова — объективная оценка</h4>
           <p>
-            Часть премий распределяется через <strong>взаимную оценку команды</strong>. 
-            Никаких субъективных KPI от менеджера. 
+            Часть премий распределяется через <strong>взаимную оценку команды</strong>.
+            Никаких субъективных KPI от менеджера.
             Только коллеги, которые видели вашу работу изнутри.
           </p>
         </div>
         <div class="eng-point reveal reveal-delay-3">
           <h4>Сначала — кандидат в пайщики</h4>
           <p>
-            Участие ограничено. Сначала вы получаете статус <strong>кандидата в пайщики</strong> 
-            и проходите проверку компетенций. Мастер принимает решение о допуске. 
+            Участие ограничено. Сначала вы получаете статус <strong>кандидата в пайщики</strong>
+            и проходите проверку компетенций. Мастер принимает решение о допуске.
             Это обеспечивает качество команды и уровень продуктов.
           </p>
         </div>
@@ -2043,14 +613,14 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ FOR INVESTORS -->
+
 <section id="investors">
   <div class="container">
     <div class="section-header">
       <div class="section-tag reveal">Для инвесторов</div>
       <h2 class="reveal reveal-delay-1">Инвестируй в <em>инфраструктуру</em><br>кооперативной экономики</h2>
       <p class="section-subtitle reveal reveal-delay-2">
-        Вы вкладываете деньги — они обеспечивают работу команд и обновляют 
+        Вы вкладываете деньги — они обеспечивают работу команд и обновляют
         экосистему. Взамен — доля в ОАП и возвраты из членских взносов платформы.
       </p>
     </div>
@@ -2063,8 +633,8 @@
       </div>
       <div class="investor-card featured reveal reveal-delay-1">
         <span class="card-icon">📈</span>
-        <h3>Реальная доходность — 45% в 2025</h3>
-        <p>По данным бухгалтерской отчётности кооператива, в 2025 году новые взносы на лицевые счета участников программы Благорост составили в среднем <strong style="color: var(--gold-light);">45% годовых</strong>. Членские взносы кооперативов за каждый документ, проведённый через платформу, покрывают текущие расходы и обеспечивают возвраты инвесторам.</p>
+        <h3>Фактический благорост — 45% в 2025 году</h3>
+        <p>По данным бухгалтерской отчётности ПК "ВОСХОД", в 2025 году дополнительные паевые взносы на лицевые счета участников программы Благорост составили в среднем <strong style="color: var(--gold-light);">45%</strong>.</p>
       </div>
       <div class="investor-card reveal reveal-delay-2">
         <span class="card-icon">🧾</span>
@@ -2094,14 +664,14 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ WHAT WE BUILD -->
+
 <section id="build">
   <div class="container">
     <div class="section-header">
       <div class="section-tag reveal">Что мы создаём</div>
       <h2 class="reveal reveal-delay-1">Цифровая <em>инфраструктура</em><br>кооперативной экономики</h2>
       <p class="section-subtitle reveal reveal-delay-2">
-        Платформа, смарт-контракты и приложения, которые делают управление 
+        Платформа, смарт-контракты и приложения, которые делают управление
         кооперативом таким же простым, как нажатие кнопки.
       </p>
     </div>
@@ -2128,13 +698,13 @@
         <div class="build-num" style="margin-bottom: 16px;">04 / ИИ-АГЕНТЫ</div>
         <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--text-bright); margin-bottom: 16px; line-height: 1.2;">Интеллектуальная поддержка управления</h3>
         <p style="font-size: 13px; color: var(--text-dim); line-height: 1.7;">
-          ИИ-агенты анализируют данные волнового плана, выявляют закономерности в «линиях жизни» проектов, прогнозируют направления развития и дают рекомендации Совету и командам. 
+          ИИ-агенты анализируют данные волнового плана, выявляют закономерности в «линиях жизни» проектов, прогнозируют направления развития и дают рекомендации Совету и командам.
           Они не заменяют людей — они усиливают коллективный интеллект кооператива.
         </p>
       </div>
       <div>
         <p style="font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-bottom: 16px;">
-          Платформа строится на принципах <strong style="color: var(--text);">«Кооперативной Экономики»</strong> — 
+          Платформа строится на принципах <strong style="color: var(--text);">«Кооперативной Экономики»</strong> —
           идеократии, где идеи управляют процессами, а капитализация — объективна и прозрачна.
         </p>
         <a href="https://coopenomics.world" target="_blank" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--gold); text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
@@ -2145,15 +715,15 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ APPS -->
+
 <section id="apps">
   <div class="container">
     <div class="section-header">
       <div class="section-tag reveal">Магазин приложений</div>
       <h2 class="reveal reveal-delay-1">Базовые программы —<br><em>открытый стандарт</em> для отрасли</h2>
       <p class="section-subtitle reveal reveal-delay-2">
-        Каждое приложение — это целевая потребительская программа со смарт-контрактом, 
-        документальными шаблонами и бизнес-логикой. Готовая основа для отраслевых вариаций. 
+        Каждое приложение — это целевая потребительская программа со смарт-контрактом,
+        документальными шаблонами и бизнес-логикой. Готовая основа для отраслевых вариаций.
         Все они сейчас в разработке — и в каждой можно принять участие.
       </p>
     </div>
@@ -2161,14 +731,14 @@
     <div class="apps-intro">
       <div class="apps-intro-text reveal">
         <p>
-          Каждое приложение реализует кооперативную бизнес-логику через <strong>смарт-контракт</strong>: 
-          юридически значимые действия фиксируются анонимизированными электронными документами, 
-          подписанными электронной подписью пайщиков. Документ — единица измерения документооборота. 
+          Каждое приложение реализует кооперативную бизнес-логику через <strong>смарт-контракт</strong>:
+          юридически значимые действия фиксируются анонимизированными электронными документами,
+          подписанными электронной подписью пайщиков. Документ — единица измерения документооборота.
           Каждый документ оплачивается членским взносом кооператива.
         </p>
         <p>
-          Базовые приложения — это <strong>открытые шаблоны</strong>. Любой участник программы Благорост 
-          может доработать существующее приложение или создать отраслевую вариацию на его основе — 
+          Базовые приложения — это <strong>открытые шаблоны</strong>. Любой участник программы Благорост
+          может доработать существующее приложение или создать отраслевую вариацию на его основе —
           и предоставить её другим кооперативам на тех же условиях возврата через членские взносы.
         </p>
       </div>
@@ -2200,8 +770,6 @@
     </div>
 
     <div class="apps-grid">
-
-      <!-- Карта пайщика -->
       <div class="app-card reveal">
         <div class="app-card-header">
           <div class="app-icon">🪪</div>
@@ -2209,8 +777,8 @@
         </div>
         <h3>Карта пайщика</h3>
         <p>
-          Цифровое удостоверение пайщика кооператива. <strong>Хранилище ключа электронной подписи</strong> 
-          и цифровой кошелёк — единая точка входа в экосистему. 
+          Цифровое удостоверение пайщика кооператива. <strong>Хранилище ключа электронной подписи</strong>
+          и цифровой кошелёк — единая точка входа в экосистему.
           Без карты пайщика ни одно другое приложение недоступно.
         </p>
         <div class="app-card-footer">
@@ -2220,7 +788,6 @@
         </div>
       </div>
 
-      <!-- Благорост -->
       <div class="app-card blagorost-card reveal reveal-delay-1">
         <div class="app-card-header">
           <div class="app-icon">⚙️</div>
@@ -2228,10 +795,10 @@
         </div>
         <h3>Благорост</h3>
         <p>
-          Платформа кооперативной разработки интеллектуальных продуктов — 
-          то самое, что вы читаете прямо сейчас. <strong>Трекер времени</strong>, 
-          управление проектами с разбивкой по компонентам (Концепция → Модель → MVP → релизы), 
-          учёт коммитов, голосование по методу Водянова. 
+          Платформа кооперативной разработки интеллектуальных продуктов —
+          то самое, что вы читаете прямо сейчас. <strong>Трекер времени</strong>,
+          управление проектами с разбивкой по компонентам (Концепция → Модель → MVP → релизы),
+          учёт коммитов, голосование по методу Водянова.
           Смарт-контракт Благорост — ядро системы.
         </p>
         <div class="app-card-footer">
@@ -2242,7 +809,6 @@
         </div>
       </div>
 
-      <!-- Стол заказов -->
       <div class="app-card reveal reveal-delay-2">
         <div class="app-card-header">
           <div class="app-icon">📦</div>
@@ -2250,9 +816,9 @@
         </div>
         <h3>Стол заказов</h3>
         <p>
-          Система кооперативного снабжения: <strong>групповые и индивидуальные 
-          заказы на поставку имущества</strong>. Пайщики формируют спрос — 
-          кооператив организует закупку. Каждая сделка оформляется 
+          Система кооперативного снабжения: <strong>групповые и индивидуальные
+          заказы на поставку имущества</strong>. Пайщики формируют спрос —
+          кооператив организует закупку. Каждая сделка оформляется
           электронным документом через смарт-контракт.
         </p>
         <div class="app-card-footer">
@@ -2262,7 +828,6 @@
         </div>
       </div>
 
-      <!-- Очередь на недвижимость -->
       <div class="app-card reveal">
         <div class="app-card-header">
           <div class="app-icon">🏠</div>
@@ -2270,9 +835,9 @@
         </div>
         <h3>Очередь на недвижимость</h3>
         <p>
-          Приобретение недвижимости по <strong>кооперативной очерёдности — 
-          с ежемесячным платежом без ссудного процента</strong>. 
-          Модель, схожая с советской практикой жилищных кооперативов, 
+          Приобретение недвижимости по <strong>кооперативной очерёдности —
+          с ежемесячным платежом без ссудного процента</strong>.
+          Модель, схожая с советской практикой жилищных кооперативов,
           реализованная через смарт-контракты и полный электронный документооборот.
         </p>
         <div class="app-card-footer">
@@ -2282,7 +847,6 @@
         </div>
       </div>
 
-      <!-- Кооперативный прокат -->
       <div class="app-card reveal reveal-delay-1">
         <div class="app-card-header">
           <div class="app-icon">🔄</div>
@@ -2290,8 +854,8 @@
         </div>
         <h3>Кооперативный прокат</h3>
         <p>
-          Аренда инвентаря и имущества <strong>вскладчину или индивидуально</strong>. 
-          Пайщики совместно формируют фонд инвентаря, а смарт-контракт управляет 
+          Аренда инвентаря и имущества <strong>вскладчину или индивидуально</strong>.
+          Пайщики совместно формируют фонд инвентаря, а смарт-контракт управляет
           доступом, бронированием и учётом использования — прозрачно для всех участников.
         </p>
         <div class="app-card-footer">
@@ -2301,27 +865,24 @@
         </div>
       </div>
 
-      <!-- Заглушка-призыв -->
       <div class="app-card reveal reveal-delay-2" style="border: 1px dashed rgba(201,151,58,0.2); background: transparent; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 260px; gap: 16px;">
         <div style="font-family: 'Cormorant Garamond', serif; font-size: 48px; color: rgba(201,151,58,0.2); line-height: 1;">+</div>
         <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--text-dim); margin: 0;">Ваша отрасль</h3>
         <p style="font-size: 12px; color: var(--text-dim); opacity: 0.7; max-width: 200px;">Любое базовое приложение можно расширить под конкретный вид деятельности</p>
       </div>
-
     </div>
 
-    <!-- Extensibility -->
     <div class="extensibility-block reveal">
       <div class="ext-left">
         <h3>Базовые приложения —<br>это <em>открытый фундамент</em></h3>
         <p>
-          Каждая программа предоставляет готовый набор: <strong>шаблоны документов, 
-          смарт-контрактную бизнес-логику и, в перспективе, переиспользуемые 
-          интерфейсные компоненты</strong>. Этого достаточно, чтобы создать отраслевое приложение 
+          Каждая программа предоставляет готовый набор: <strong>шаблоны документов,
+          смарт-контрактную бизнес-логику и, в перспективе, переиспользуемые
+          интерфейсные компоненты</strong>. Этого достаточно, чтобы создать отраслевое приложение
           без написания с нуля — только адаптация под специфику.
         </p>
         <p>
-          Разработанные вариации предоставляются другим кооперативам на тех же условиях: 
+          Разработанные вариации предоставляются другим кооперативам на тех же условиях:
           членский взнос за документ → покрытие расходов → возврат авторам через Благорост.
           Экосистема растёт, не дробя ценность.
         </p>
@@ -2350,11 +911,10 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ CTA -->
+
 <section id="cta">
   <div class="container">
     <div class="cta-label reveal">Ограниченный доступ</div>
@@ -2362,8 +922,8 @@
       Готовы вложить<br><em>время или деньги</em><br>в создание нового?
     </h2>
     <p class="cta-desc reveal reveal-delay-2">
-      Доступ к участию ограничен. Сначала вы получаете статус кандидата 
-      в пайщики — Совет и Мастер оценивают соответствие компетенций и намерений. 
+      Доступ к участию ограничен. Сначала вы получаете статус кандидата
+      в пайщики — Совет и Мастер оценивают соответствие компетенций и намерений.
       Это не барьер, а гарантия качества команды.
     </p>
     <div class="cta-buttons reveal reveal-delay-3">
@@ -2373,7 +933,7 @@
       </a>
     </div>
     <p class="cta-note reveal reveal-delay-4">
-      Программа действует на основании <span>Положения о ЦПП «БЛАГОРОСТ»</span>, 
+      Программа действует на основании <span>Положения о ЦПП «БЛАГОРОСТ»</span>,
       утверждённого Протоколом Совета №30 от 18 декабря 2025 г.
     </p>
 
@@ -2386,7 +946,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+
 <footer>
   <div class="footer-logo">БЛАГОРОСТ / ПК «ВОСХОД»</div>
   <div class="footer-text">
@@ -2397,35 +957,7 @@
   </div>
 </footer>
 
-<script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(el => observer.observe(el));
 
-  // Init visible for hero
-  setTimeout(() => {
-    document.querySelectorAll('#hero .reveal').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), i * 120);
-    });
-  }, 100);
-
-  // Nav scroll effect
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      nav.style.background = 'rgba(8,10,14,0.97)';
-    } else {
-      nav.style.background = 'linear-gradient(to bottom, rgba(8,10,14,0.95), transparent)';
-    }
-  });
-</script>
+<script src="src/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,141 @@
+#how {
+  padding: 140px 0;
+}
+
+.how-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 4px;
+  margin-top: 48px;
+  padding: 24px 32px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+}
+
+.flow-step {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--text-bright);
+}
+
+.flow-arrow {
+  font-size: 12px;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+.phases {
+  margin-top: 48px;
+  position: relative;
+}
+
+.phases::before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold), rgba(201,151,58,0.1));
+}
+
+.phase {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.phase-num {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.phase-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--dark);
+  outline: 2px solid rgba(201,151,58,0.3);
+  margin-left: 26px;
+  flex-shrink: 0;
+}
+
+.phase-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-top: 12px;
+  opacity: 0.7;
+}
+
+.phase-content {
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.phase:last-child .phase-content { border-bottom: none; }
+
+.phase-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text-bright);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.phase-content p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 12px;
+  max-width: 640px;
+}
+
+.phase-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 5px 12px;
+  text-transform: uppercase;
+}
+
+.tag.gold-tag {
+  color: var(--gold);
+  border-color: rgba(201,151,58,0.3);
+  background: var(--gold-dim);
+}
+
+.how-notes {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.how-notes p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 560px;
+  opacity: 0.9;
+}

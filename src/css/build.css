@@ -1,0 +1,41 @@
+#build {
+  padding: 140px 0;
+  background: var(--dark-2);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.04);
+  margin-top: 72px;
+}
+
+.build-card {
+  background: var(--dark-2);
+  padding: 44px 36px;
+}
+
+.build-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-bright);
+  margin: 20px 0 14px;
+  line-height: 1.2;
+}
+
+.build-card p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.build-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  opacity: 0.6;
+}

@@ -1,0 +1,18 @@
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  .container { padding: 0 24px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero-formula-card { display: none; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .what-grid { grid-template-columns: 1fr; gap: 40px; }
+  .formula-section-grid { grid-template-columns: 1fr; }
+  .engineers-grid { grid-template-columns: 1fr; }
+  .investor-grid { grid-template-columns: 1fr; }
+  .investor-flow { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .investor-flow::after { display: none; }
+  .build-grid { grid-template-columns: 1fr; }
+  .apps-intro { grid-template-columns: 1fr; gap: 40px; }
+  .apps-grid { grid-template-columns: 1fr; }
+  .extensibility-block { grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 40px 24px; }
+}

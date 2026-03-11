@@ -1,0 +1,101 @@
+#investors {
+  padding: 140px 0;
+}
+
+.investor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.04);
+  margin-top: 72px;
+}
+
+.investor-card {
+  background: var(--dark);
+  padding: 44px 32px;
+}
+
+.investor-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-bright);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.investor-card p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.investor-card .card-icon {
+  font-size: 24px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.investor-card.featured {
+  background: var(--dark-3);
+  border: 1px solid rgba(201,151,58,0.25);
+  margin: -1px;
+  z-index: 2;
+  position: relative;
+}
+
+.investor-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 60px;
+  position: relative;
+}
+
+.investor-flow::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), var(--gold), transparent);
+  opacity: 0.3;
+}
+
+.flow-item {
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+}
+
+.flow-item::before {
+  content: attr(data-step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--dark-3);
+  border: 1px solid rgba(201,151,58,0.3);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: var(--gold);
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.flow-item h4 {
+  font-size: 14px;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.flow-item p {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}

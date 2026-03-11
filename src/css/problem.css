@@ -1,0 +1,47 @@
+#problem {
+  padding: 120px 0;
+  background: var(--dark-2);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: rgba(255,255,255,0.04);
+  margin-top: 60px;
+}
+
+.problem-card {
+  background: var(--dark-2);
+  padding: 48px 40px;
+  position: relative;
+}
+
+.problem-icon {
+  font-size: 28px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.problem-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-bright);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.problem-card p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.problem-card.highlight {
+  background: linear-gradient(135deg, rgba(201,151,58,0.08), rgba(201,151,58,0.02));
+  border: 1px solid rgba(201,151,58,0.2);
+}
+
+.problem-card.highlight h3 { color: var(--gold-light); }
