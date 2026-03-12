@@ -48,6 +48,7 @@ function build() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Участвуйте в разработке платформы и приложений экосистемы «Кооперативная Экономика» временем или деньгами — получайте справедливую долю в объекте авторских прав (ОАП) с возвратом выгоды от роста экосистемы.">
 <title>БЛАГОРОСТ — Инвестиции в кооперативную экономику</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
