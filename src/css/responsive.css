@@ -14,5 +14,6 @@
   .apps-intro { grid-template-columns: 1fr; gap: 40px; }
   .apps-grid { grid-template-columns: 1fr; }
   .extensibility-block { grid-template-columns: 1fr; gap: 40px; }
+  .returns-sources { grid-template-columns: 1fr; }
   footer { padding: 40px 24px; }
 }
