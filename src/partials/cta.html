@@ -2,29 +2,41 @@
   <div class="container">
     <div class="cta-label reveal">Ограниченный доступ</div>
     <h2 class="cta-title reveal reveal-delay-1">
-      Готовы вложить<br><em>время или деньги</em><br>в создание нового?
+      Готовы внести<br><em>время или деньги</em><br>в создание цифровой платформы ведения хозяйства?
     </h2>
     <p class="cta-desc reveal reveal-delay-2">
-      Доступ к участию ограничен. Сначала вы получаете статус кандидата
-      в пайщики — Совет и Мастер оценивают соответствие компетенций и намерений.
+      Доступ к участию ограничен. Совет и Мастер оценивают соответствие компетенций и намерений.
       Это не барьер, а гарантия качества команды.
     </p>
     <div class="cta-buttons reveal reveal-delay-3">
-      <a href="https://цифровой-кооператив.рф" target="_blank" class="btn-large">Принять участие</a>
-      <a href="https://coopenomics.github.io/calculator/#/wizard" target="_blank" class="btn-secondary" style="font-size: 13px; letter-spacing: 0.15em;">
+      <a href="https://лк.цифровой-кооператив.рф" target="_blank" class="btn-large">Принять участие</a>
+      <button type="button" class="btn-secondary calc-open" style="font-size: 13px; letter-spacing: 0.15em;">
         Калькулятор модели →
-      </a>
+      </button>
     </div>
     <p class="cta-note reveal reveal-delay-4">
-      Программа действует на основании <span>Положения о ЦПП «БЛАГОРОСТ»</span>,
-      утверждённого Протоколом Совета №30 от 18 декабря 2025 г.
+      Программа действует на основании
+      <a href="https://drive.google.com/file/d/1_ZQuxJ2kv2Ct1EWRZ2xJyS2Fc4qy0y-R/view?usp=sharing" target="_blank" rel="noopener">Положения о ЦПП «БЛАГОРОСТ»</a>,
+      утверждённого Протоколом Совета №30 от 18 декабря 2025 г., и
+      <a href="https://drive.google.com/file/d/1334V65bG9MdqYKm9cGZ_YeTfwuyyjvDk/view?usp=sharing" target="_blank" rel="noopener">Положения о ЦПП «ГЕНЕРАТОР»</a>,
+      утверждённого Протоколом Совета №39 от 27 февраля 2026 г.
     </p>
-
     <div class="access-badges reveal reveal-delay-4">
       <div class="badge"><div class="badge-dot"></div><span>Безусловно возвратные паевые взносы</span></div>
       <div class="badge"><div class="badge-dot"></div><span>Закон РФ № 3085-1 о потребительской кооперации</span></div>
       <div class="badge"><div class="badge-dot"></div><span>Блокчейн-фиксация всех операций</span></div>
-      <div class="badge"><div class="badge-dot"></div><span>Бессрочная программа</span></div>
     </div>
   </div>
 </section>
+
+<div id="calc-modal" class="calc-modal" aria-hidden="true">
+  <div class="calc-modal-backdrop"></div>
+  <div class="calc-modal-wrap">
+    <button type="button" class="calc-modal-close" aria-label="Закрыть">×</button>
+    <iframe
+      src="https://coopenomics.github.io/calculator/#/wizard"
+      title="Калькулятор модели"
+      class="calc-modal-iframe"
+    ></iframe>
+  </div>
+</div>

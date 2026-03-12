@@ -32,3 +32,37 @@ window.addEventListener('scroll', () => {
     nav.style.background = 'linear-gradient(to bottom, rgba(8,10,14,0.95), transparent)';
   }
 });
+
+/**
+ * Калькулятор — модальное окно
+ */
+const calcModal = document.getElementById('calc-modal');
+const calcOpen = document.querySelector('.calc-open');
+const calcClose = document.querySelector('.calc-modal-close');
+const calcBackdrop = document.querySelector('.calc-modal-backdrop');
+
+function openCalcModal() {
+  if (calcModal) {
+    calcModal.classList.add('is-open');
+    calcModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeCalcModal() {
+  if (calcModal) {
+    calcModal.classList.remove('is-open');
+    calcModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+}
+
+if (calcOpen) calcOpen.addEventListener('click', openCalcModal);
+if (calcClose) calcClose.addEventListener('click', closeCalcModal);
+if (calcBackdrop) calcBackdrop.addEventListener('click', closeCalcModal);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && calcModal?.classList.contains('is-open')) {
+    closeCalcModal();
+  }
+});

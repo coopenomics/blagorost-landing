@@ -82,6 +82,25 @@
 
 .cta-note span { color: var(--gold); }
 
+.cta-note a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cta-note a:hover {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
+.cta-note a:visited {
+  color: var(--gold);
+}
+
+.cta-note a:active {
+  color: var(--gold-light);
+}
+
 .access-badges {
   display: flex;
   gap: 32px;
@@ -104,4 +123,85 @@
   border-radius: 50%;
   background: var(--gold);
   flex-shrink: 0;
+}
+
+/* Кнопка калькулятора — сброс стилей */
+.cta-buttons .btn-secondary,
+.cta-buttons button.btn-secondary {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+/* Модальное окно калькулятора */
+.calc-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.calc-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.calc-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+
+.calc-modal-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  background: var(--dark);
+  border: 1px solid rgba(201, 151, 58, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+.calc-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+
+.calc-modal-close:hover {
+  color: var(--text-bright);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.calc-modal-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
