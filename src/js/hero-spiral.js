@@ -62,10 +62,24 @@
       ctx.stroke();
     }
 
+    var lastDraw = 0;
+    var targetInterval = 1000 / 30;
+    var rafId;
     function tick() {
-      var t = (performance.now() - startTime) / 1000;
-      draw(t);
-      requestAnimationFrame(tick);
+      var now = performance.now();
+      if (now - lastDraw >= targetInterval) {
+        lastDraw = now;
+        draw((now - startTime) / 1000);
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+    var hero = document.getElementById('hero');
+    if (hero && typeof IntersectionObserver !== 'undefined') {
+      var io = new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting) { lastDraw = 0; rafId = requestAnimationFrame(tick); }
+        else if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+      }, { threshold: 0 });
+      io.observe(hero);
     }
 
     resize();
@@ -82,7 +96,7 @@
       });
       return;
     }
-    tick();
+    if (!hero || typeof IntersectionObserver === 'undefined') tick();
   }
 
   if (document.readyState === 'loading') {
