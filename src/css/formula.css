@@ -5,6 +5,11 @@
   overflow: hidden;
 }
 
+/* Меньше «воздуха» между вводом и блоком «Прежде чем к формулам» */
+#formula .section-header {
+  margin-bottom: 28px;
+}
+
 /* Вводный текст секции (вместо короткого подзаголовка) */
 .formula-intro {
   margin-top: 20px;
@@ -27,6 +32,18 @@
 /* Сравнение «найм / Благорост»: подсветка только у строк формул */
 .formula-hire-compare {
   margin-bottom: 56px;
+}
+
+.formula-hire-intro {
+  margin: 0 0 28px;
+  max-width: none;
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.75;
+}
+.formula-hire-intro strong {
+  color: var(--text-bright);
+  font-weight: 500;
 }
 .formula-hire-compare-grid {
   display: grid;
@@ -67,7 +84,9 @@
 }
 .formula-hire-var {
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: var(--text-bright);
 }
 .formula-hire-explain {
@@ -77,10 +96,33 @@
   line-height: 1.65;
   opacity: 0.88;
 }
+.formula-hire-explain strong {
+  color: var(--text);
+  font-weight: 600;
+}
 .formula-hire-explain em {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   color: var(--text);
+}
+.formula-hire-legend {
+  margin: 28px 0 0;
+  max-width: none;
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.75;
+}
+.formula-hire-legend + .formula-hire-legend {
+  margin-top: 16px;
+}
+.formula-hire-legend strong {
+  color: var(--text-bright);
+  font-weight: 500;
+}
+.formula-hire-legend em {
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold);
 }
 .formula-hire-arrow {
   padding: 36px 20px 0;
