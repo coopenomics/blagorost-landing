@@ -6,6 +6,19 @@
   .problem-grid { grid-template-columns: 1fr; }
   .what-grid { grid-template-columns: 1fr; gap: 40px; }
   .formula-section-grid { grid-template-columns: 1fr; }
+  .formula-hire-compare-grid {
+    grid-template-columns: 1fr;
+  }
+  .formula-hire-col {
+    padding: 8px 0 0;
+  }
+  .formula-hire-col:last-of-type {
+    padding: 24px 0 0;
+  }
+  .formula-hire-arrow {
+    padding: 8px 0;
+    transform: rotate(90deg);
+  }
   .engineers-grid { grid-template-columns: 1fr; }
   .investor-grid { grid-template-columns: 1fr; }
   .investor-flow { grid-template-columns: 1fr 1fr; gap: 40px; }
