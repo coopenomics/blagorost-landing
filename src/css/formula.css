@@ -272,6 +272,10 @@
   line-height: 1.8;
 }
 
+.exp-block p + p {
+  margin-top: 16px;
+}
+
 .exp-block p strong { color: var(--text); font-weight: 500; }
 
 /* Откуда берутся возвраты */
