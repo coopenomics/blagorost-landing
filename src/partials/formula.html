@@ -15,18 +15,18 @@
       <svg viewBox="0 0 680 148" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;display:block;margin:0 auto;">
         <rect x="8" y="6" width="238" height="58" rx="8" fill="rgba(201,151,58,0.06)" stroke="rgba(201,151,58,0.5)" stroke-width="1.5"/>
         <text x="119" y="28" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="700" fill="#C9973A" letter-spacing="0.1em">ВРЕМЯ АСТРОНОМИЧЕСКОЕ</text>
-        <text x="105" y="48" text-anchor="middle" font-family="inherit" font-size="11" fill="rgba(255,255,255,0.4)">стоимость единицы —</text>
+        <text x="105" y="48" text-anchor="middle" font-family="inherit" font-size="11" fill="var(--text-dim)">стоимость единицы —</text>
         <text x="213" y="50" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="16" fill="#C9973A">v</text>
         <rect x="8" y="84" width="238" height="58" rx="8" fill="rgba(201,151,58,0.03)" stroke="rgba(201,151,58,0.28)" stroke-width="1.5"/>
         <text x="119" y="106" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="700" fill="rgba(201,151,58,0.7)" letter-spacing="0.1em">ВРЕМЯ «СОЗИДАТЕЛЬНОЕ»</text>
-        <text x="105" y="126" text-anchor="middle" font-family="inherit" font-size="11" fill="rgba(255,255,255,0.4)">стоимость единицы —</text>
+        <text x="105" y="126" text-anchor="middle" font-family="inherit" font-size="11" fill="var(--text-dim)">стоимость единицы —</text>
         <text x="215" y="128" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="16" fill="rgba(201,151,58,0.7)">v'</text>
         <path d="M 246 35 C 300 35 315 74 365 74" fill="none" stroke="rgba(201,151,58,0.45)" stroke-width="1.5" stroke-dasharray="5 3"/>
         <path d="M 246 113 C 300 113 315 74 365 74" fill="none" stroke="rgba(201,151,58,0.25)" stroke-width="1.5" stroke-dasharray="5 3"/>
         <polygon points="365,74 354,68 354,80" fill="rgba(201,151,58,0.5)"/>
         <rect x="376" y="42" width="292" height="64" rx="8" fill="rgba(201,151,58,0.07)" stroke="#C9973A" stroke-width="1.5"/>
         <text x="522" y="72" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="21" fill="#C9973A">Продукт</text>
-        <text x="522" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(255,255,255,0.35)" letter-spacing="0.07em">овеществлённый труд созидателя</text>
+        <text x="522" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--text-dim)" letter-spacing="0.07em">овеществлённый труд созидателя</text>
       </svg>
     </div>
 
@@ -216,15 +216,15 @@
           <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:16px;">УРОВЕНЬ 1 — СЕБЕСТОИМОСТЬ ПРОЕКТА</p>
           <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
             <div style="display:flex;justify-content:space-between;">
-              <span style="color:rgba(255,255,255,0.6);">Вклад исполнителя (v + v') × t</span>
+              <span style="color:var(--text-dim);">Вклад исполнителя (v + v') × t</span>
               <span style="color:var(--text);font-weight:600;">120 000 ₽</span>
             </div>
             <div style="display:flex;justify-content:space-between;">
-              <span style="color:rgba(255,255,255,0.6);">Вклад соавтора — 0,618 × 120 000</span>
+              <span style="color:var(--text-dim);">Вклад соавтора — 0,618 × 120 000</span>
               <span style="color:var(--text);font-weight:600;">74 160 ₽</span>
             </div>
             <div style="display:flex;justify-content:space-between;">
-              <span style="color:rgba(255,255,255,0.6);">Вклад координатора — 5% × 200 000</span>
+              <span style="color:var(--text-dim);">Вклад координатора — 5% × 200 000</span>
               <span style="color:var(--text);font-weight:600;">10 000 ₽</span>
             </div>
             <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(201,151,58,0.2);padding-top:12px;margin-top:4px;">
@@ -245,27 +245,24 @@
 
       <!-- Уровень 2 расчёт -->
       <div style="padding:24px;background:rgba(201,151,58,0.03);border:1px solid rgba(201,151,58,0.1);border-radius:10px;">
-        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:4px;">УРОВЕНЬ 2 — ПРОГРАММА БЛАГОРОСТ</p>
-        <p style="font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:20px;">
-          Допустим, платформа состоит из 10 таких проектов с той же себестоимостью. Тогда совокупный A = 10 × 204 160 = 2 041 600 ₽.
-        </p>
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--text-dim);margin-bottom:20px;">УРОВЕНЬ 2 — ПРОГРАММА БЛАГОРОСТ</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
           <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;">
             <div style="display:flex;justify-content:space-between;">
-              <span style="color:rgba(255,255,255,0.6);">Совокупная себестоимость A</span>
-              <span style="color:var(--text);font-weight:600;">2 041 600 ₽</span>
+              <span style="color:var(--text-dim);">Себестоимость проекта A</span>
+              <span style="color:var(--text);font-weight:600;">204 160 ₽</span>
             </div>
             <div style="display:flex;justify-content:space-between;">
-              <span style="color:rgba(255,255,255,0.6);">Стоимость ОАП платформы S = φ × A</span>
-              <span style="color:var(--text);font-weight:600;">3 303 309 ₽</span>
+              <span style="color:var(--text-dim);">S = φ × A</span>
+              <span style="color:var(--text);font-weight:600;">330 331 ₽</span>
             </div>
             <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(201,151,58,0.2);padding-top:12px;margin-top:4px;">
               <span style="color:#C9973A;font-weight:700;">Благорост = S − A</span>
-              <span style="color:#C9973A;font-weight:700;font-size:16px;">1 261 709 ₽</span>
+              <span style="color:#C9973A;font-weight:700;font-size:16px;">126 171 ₽</span>
             </div>
           </div>
-          <div style="padding:16px 20px;background:rgba(0,0,0,0.2);border-radius:8px;font-size:13px;line-height:1.7;color:rgba(255,255,255,0.55);">
-            Эта сумма — <strong style="color:rgba(255,255,255,0.8);">1 261 709 ₽</strong> — не остаётся у платформы. Она распределяется между всеми участниками программы Благорост — исполнителем, соавтором, координатором и всеми создателями остальных девяти проектов — пропорционально их вкладу в совокупную себестоимость.
+          <div style="padding:16px 20px;background:var(--gold-dim);border:1px solid rgba(201,151,58,0.2);border-radius:8px;font-size:13px;line-height:1.8;color:var(--text-dim);">
+            61,8% от себестоимости проекта — это и есть благорост. Команда создаёт РИД, а участники программы получают возможность внести его как <strong style="color:var(--text);">дополнительные паевые взносы</strong> — пропорционально своему участию.
           </div>
         </div>
       </div>

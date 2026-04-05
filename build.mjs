@@ -20,6 +20,7 @@ const FAVICON_LINK = '<link rel="icon" href="src/assets/logo.svg" type="image/sv
 const PARTIALS_ORDER = [
   'nav',
   'hero',
+  'manifesto',
   'problem',
   'what',
   'formula',
